@@ -1,0 +1,54 @@
+
+INTRODUCTION
+
+  This design document aims to present the VanHack team a detailed data protection solution for an Enterprise IT environment running mixed operating systems. The Quest data protection is chosen as my preferred solution because of its ease of deployment and administration, competitive and easy licensing model with extra features that come with no cost.
+In today’s ever changing IT and challenging business environment with unprecedented data growth and complexity in management, IT departments are expected to spend less and do more with the shrinking IT budget. The need to move away from legacy approaches to backup and recovery becomes imperative. Organizations are likely finding that match of their time is spent on administration, leaving them little time to innovate to stay competitive. But in the midst of the rapid change the market is experiencing, modernizing data protection environment can make a difference in saving time and money. 
+Organizations that focus more on applications and services are seeing a significant growth in their businesses. Quest data protection (formerly Dell Data Protection) helps customers unlock greater potential through the power of technology—delivering scalable, affordable and simple-to-use solutions that simplify IT and mitigate risk.
+The benefits of quest data protection are:
+?	Having data and applications always available and easily restored
+?	Automating processes to do more and innovate more
+?	Modernizing for the cloud to quickly leverage its advantage
+?	Being more data driven within organizations and being connected at all times; not being bogged down with the database itself, but actually using the data for the good of the business
+
+1.1.	Data Protection Design
+This data protection solution comprises of:
+-	Dell PowerEdge R430 server as the backup server running Microsoft Windows Server 2012R2 with Quest Netvault Backup Application installed.
+-	Dell PowerVault DR6300: purposely built disk backup appliance serving as the primary backup storage location. It does compression, replication and 97% deduplication of backed up data. 
+-	Dell PowerVault Tape Library TL4000 serves as the secondary backup storage location for backups for long-term retention. This provides backup data to be taken offsite.
+
+1.2.	Networks 
+
+The diagram below depicts the connection between the Netvault Server (R430), Tape Library(TL4000) and DR6300 backup appliance. The TL4000 connect directly to the R430 using SAS cables. The DR6300 is connected to the LAN switch. The DR6300 can reach the Netvault server through the LAN switch which is added as primary storage location and TL4000 is added as secondary storage location on the Netvault Server. 
+
+Network Diagram
+
+
+1.3.	Protected Applications
+
+Applications are protected by installing Netvault client on every application and also installing specific plugin on them e.g SQL plugin is installed on SQL server, AIX plugin is installed on the Oracle AIX server, Exchange plugin is installed on Exchange Server. The Plug-in supports image-level and file-level backups of all applications. Windows Servers running Microsoft Exchange application, Microsoft SQL application, Linux Server (file server) and Unix Server (Oracle Server Running on AIX) are protected as depicted in the above diagram.
+
+Image-level backups
+
+Image-level backups use the snapshot technology to provide point-in-time image of servers.
+The following types of recoveries can be performed from Image-level backups:
+•	Recover a full server to a previous known state.
+•	Restore individual files and directories to a specified location.
+This backup method is available to both Linux and Windows-based applications.
+
+File-level backups
+
+This file-level backup method is available to all Servers. The file-level backup
+enable granular restore of one or more files, and can be used in the event of data loss due to user errors, data corruption, or accidental deletion of files.
+
+1.4.	Data Protection Strategy
+
+The data protection strategy will be to back up all the applications using Netvault Server application which will is installed on the Dell PowerEdge R430 server. The backup job will be stored on the primary storage location (DR6300) and can then be copied to the TL4000 after the backup job has been completed on the DR6300. Jobs can also be backed up directly to tape drive but it takes longer time because of the Tape technology.
+
+Logical Backup Layout Diagram
+                              
+                                                               
+
+CONCLUSION
+
+Quest data protection solution provide faster backup and restore. It increases performance and saves you time, maintenance and licensing cost. It meets all business requirements and provides end to end data protection solutions. 
+
